@@ -58,6 +58,10 @@ def detect_backends() -> tuple:
         from .tf import TENSORFLOW
     except ImportError:
         pass
+    try:
+        from .mindspore import MINDSPORE
+    except ImportError:
+        pass
     from .math.backend import BACKENDS
     return tuple([b for b in BACKENDS if b.name != 'Python'])
 
